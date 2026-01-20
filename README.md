@@ -55,8 +55,8 @@ ride-surf/
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/samyak-027/vehicle-rental-system.git
-cd ride-surf
+git clone https://github.com/samyak-027/rental-transport-services.git
+cd rental-transport-services
 ```
 
 2. **Setup Backend Server**
@@ -93,8 +93,9 @@ SESSION_SECRET=your-session-secret
 CLOUDINARY_CLOUD_NAME=your-cloudinary-name
 CLOUDINARY_API_KEY=your-api-key
 CLOUDINARY_API_SECRET=your-api-secret
-EMAIL_USER=your-email@gmail.com
-EMAIL_PASS=your-app-password
+SMTP_USER = "your-email-with@smtp-brevo.com"
+SMTP_PASS = "your-created-key-smtp-pass"
+SENDER_EMAIL = "your-account-email@gmail.com"
 PORT=5007
 ```
 

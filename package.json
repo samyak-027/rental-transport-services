@@ -37,10 +37,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/samyak-027/vehicle-rental-system.git"
+    "url": "https://github.com/samyak-027/rental-transport-services.git"
   },
   "bugs": {
-    "url": "https://github.com/samyak-027/vehicle-rental-system/issue"
+    "url": "https://github.com/samyak-027/rental-transport-services/issue"
   },
-  "homepage": "https://github.com/samyak-027/vehicle-rental-system#readme"
+  "homepage": "https://github.com/samyak-027/rental-transport-services#readme"
 }
