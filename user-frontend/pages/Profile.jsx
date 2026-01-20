@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useStore } from "../context/store.jsx";
 import * as api from "../services/api.js";
-import { Check, Clock, XCircle, User, Camera, Loader2 } from "lucide-react";
+import { Check, Clock, XCircle, User, Camera, Loader2, X } from "lucide-react";
 
 export const Profile = () => {
   const { state, dispatch } = useStore();
@@ -13,6 +13,8 @@ export const Profile = () => {
   const [uploadingPicture, setUploadingPicture] = useState(false);
   const [frontFile, setFrontFile] = useState(null);
   const [backFile, setBackFile] = useState(null);
+  const [frontPreview, setFrontPreview] = useState(null);
+  const [backPreview, setBackPreview] = useState(null);
   const [userData, setUserData] = useState(null);
   const fileInputRef = useRef(null);
 
@@ -111,6 +113,42 @@ export const Profile = () => {
   /* =======================
      LICENSE UPLOAD
   ======================= */
+  const handleFrontFileChange = (e) => {
+    const file = e.target.files[0];
+    setFrontFile(file);
+    
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => setFrontPreview(e.target.result);
+      reader.readAsDataURL(file);
+    } else {
+      setFrontPreview(null);
+    }
+  };
+
+  const handleBackFileChange = (e) => {
+    const file = e.target.files[0];
+    setBackFile(file);
+    
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => setBackPreview(e.target.result);
+      reader.readAsDataURL(file);
+    } else {
+      setBackPreview(null);
+    }
+  };
+
+  const clearFrontFile = () => {
+    setFrontFile(null);
+    setFrontPreview(null);
+  };
+
+  const clearBackFile = () => {
+    setBackFile(null);
+    setBackPreview(null);
+  };
+
   const handleUpload = async () => {
     if (!frontFile || !backFile) {
       alert("Please upload both license images");
@@ -140,6 +178,8 @@ export const Profile = () => {
 
       setFrontFile(null);
       setBackFile(null);
+      setFrontPreview(null);
+      setBackPreview(null);
       alert("License uploaded successfully. Await admin approval.");
     } catch (err) {
       console.error(err);
@@ -257,22 +297,88 @@ export const Profile = () => {
                 </p>
 
                 <div className="mb-3">
-                  <label className="block text-xs text-gray-500 mb-1">License Front</label>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => setFrontFile(e.target.files[0])}
-                    className="w-full text-sm"
-                  />
+                  <label className="block text-xs text-gray-500 mb-2">License Front</label>
+                  <div className="relative">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFrontFileChange}
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                      id="license-front"
+                    />
+                    {frontPreview ? (
+                      <div className="relative">
+                        <img 
+                          src={frontPreview} 
+                          alt="License front preview" 
+                          className="w-full h-32 object-cover rounded-lg border-2 border-gray-300"
+                        />
+                        <button
+                          onClick={clearFrontFile}
+                          className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors"
+                          type="button"
+                        >
+                          <X size={16} />
+                        </button>
+                        <div className="absolute bottom-2 left-2 bg-black/70 text-white px-2 py-1 rounded text-xs">
+                          {frontFile?.name}
+                        </div>
+                      </div>
+                    ) : (
+                      <label 
+                        htmlFor="license-front"
+                        className="flex items-center justify-center w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-primary hover:bg-gray-50 transition-colors"
+                      >
+                        <div className="text-center">
+                          <Camera className="w-6 h-6 text-gray-400 mx-auto mb-2" />
+                          <span className="text-sm text-gray-600">Choose front image</span>
+                          <p className="text-xs text-gray-400 mt-1">Click to upload</p>
+                        </div>
+                      </label>
+                    )}
+                  </div>
                 </div>
                 <div className="mb-4">
-                  <label className="block text-xs text-gray-500 mb-1">License Back</label>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => setBackFile(e.target.files[0])}
-                    className="w-full text-sm"
-                  />
+                  <label className="block text-xs text-gray-500 mb-2">License Back</label>
+                  <div className="relative">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleBackFileChange}
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                      id="license-back"
+                    />
+                    {backPreview ? (
+                      <div className="relative">
+                        <img 
+                          src={backPreview} 
+                          alt="License back preview" 
+                          className="w-full h-32 object-cover rounded-lg border-2 border-gray-300"
+                        />
+                        <button
+                          onClick={clearBackFile}
+                          className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600 transition-colors"
+                          type="button"
+                        >
+                          <X size={16} />
+                        </button>
+                        <div className="absolute bottom-2 left-2 bg-black/70 text-white px-2 py-1 rounded text-xs">
+                          {backFile?.name}
+                        </div>
+                      </div>
+                    ) : (
+                      <label 
+                        htmlFor="license-back"
+                        className="flex items-center justify-center w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-primary hover:bg-gray-50 transition-colors"
+                      >
+                        <div className="text-center">
+                          <Camera className="w-6 h-6 text-gray-400 mx-auto mb-2" />
+                          <span className="text-sm text-gray-600">Choose back image</span>
+                          <p className="text-xs text-gray-400 mt-1">Click to upload</p>
+                        </div>
+                      </label>
+                    )}
+                  </div>
                 </div>
 
                 <button
@@ -301,12 +407,12 @@ export const Profile = () => {
           ) : bookings.length === 0 ? (
             <div className="bg-white p-6 rounded-lg border text-center">
               <p className="text-gray-500 mb-4">No bookings yet.</p>
-              <a 
-                href="/vehicles" 
+              <Link 
+                to="/vehicles" 
                 className="text-primary hover:underline font-medium"
               >
                 Browse vehicles to make your first booking
-              </a>
+              </Link>
             </div>
           ) : (
             <div className="space-y-4">
