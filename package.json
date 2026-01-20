@@ -1,0 +1,46 @@
+{
+  "name": "ride-surf",
+  "version": "1.0.0",
+  "description": "A comprehensive vehicle rental management system",
+  "main": "index.js",
+  "scripts": {
+    "install:all": "npm run install:server && npm run install:user && npm run install:admin",
+    "install:server": "cd server-rentals && npm install",
+    "install:user": "cd user-frontend && npm install", 
+    "install:admin": "cd admin-rentals && npm install",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:user\" \"npm run dev:admin\"",
+    "dev:server": "cd server-rentals && npm start",
+    "dev:user": "cd user-frontend && npm run dev",
+    "dev:admin": "cd admin-rentals && npm run dev",
+    "build": "npm run build:user && npm run build:admin",
+    "build:user": "cd user-frontend && npm run build",
+    "build:admin": "cd admin-rentals && npm run build",
+    "start": "cd server-rentals && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vehicle-rental",
+    "react",
+    "nodejs",
+    "express",
+    "mongodb",
+    "jwt",
+    "booking-system"
+  ],
+  "author": "Samyak & Khush",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samyak-027/vehicle-rental-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/samyak-027/vehicle-rental-system/issue"
+  },
+  "homepage": "https://github.com/samyak-027/vehicle-rental-system#readme"
+}

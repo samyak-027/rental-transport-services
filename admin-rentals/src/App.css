@@ -1,0 +1,6 @@
+@import "react-burger-menu/lib/menus/slide.css";
+@import "tailwindcss";
+@plugin "daisyui" {
+    themes: light --default, 
+            dark --prefersdark; 
+}
