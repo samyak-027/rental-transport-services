@@ -188,7 +188,7 @@ cd admin-rentals && npm run dev
 - Admins are already initialized in the function named FIXED_ADMINS in server-rentals/controllers/AdminController.js. Please make changes accordingly there.
 
 ### API Testing
-```bash
+
 # Test public vehicle endpoint
 curl http://localhost:5007/api/cars/getCars
 
