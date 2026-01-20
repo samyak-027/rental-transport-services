@@ -103,11 +103,11 @@ export const Layout = ({ children }) => {
           <div className="md:hidden bg-white border-t">
             <div className="p-3 space-y-2">
               <Link to="/" className="block">Home</Link>
-              <Link to="/vehicles">Vehicles</Link>
+              <Link to="/vehicles">Vehicles</Link><br />
 
               {state.auth.isAuthenticated ? (
                 <>
-                  <Link to="/profile">Profile</Link>
+                  <Link to="/profile">Profile</Link><br />
                   <button
                     onClick={handleLogout}
                     className="text-red-600 w-full text-left"
@@ -117,7 +117,7 @@ export const Layout = ({ children }) => {
                 </>
               ) : (
                 <>
-                  <Link to="/login">Login</Link>
+                  <Link to="/login">Login</Link><br />
                   <Link to="/signup">Signup</Link>
                 </>
               )}
@@ -145,7 +145,7 @@ export const Layout = ({ children }) => {
                 Connecting travelers with the perfect vehicles for their journeys.
               </p>
               <p className="text-sm text-slate-500">
-                © 2025 RideSurf. All rights reserved.
+                © 2026 RideSurf. All rights reserved.
               </p>
             </div>
 
