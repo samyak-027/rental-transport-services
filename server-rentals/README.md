@@ -61,7 +61,7 @@ CLOUDINARY_CLOUD_NAME=your-cloudinary-name
 CLOUDINARY_API_KEY=your-cloudinary-api-key
 CLOUDINARY_API_SECRET=your-cloudinary-api-secret
 
-# Email Service (Gmail)
+# Email Service (Brevo)
 SMTP_USER="your-email-with@smtp-brevo.com"
 SMTP_PASS="your-created-key-smtp-pass"
 SENDER_EMAIL="your-account-email@gmail.com"

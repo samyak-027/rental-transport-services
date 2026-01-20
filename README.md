@@ -185,19 +185,13 @@ cd admin-rentals && npm run dev
 ## 🧪 Testing
 
 ### Admin Login
-- Email: `admin@example.com`
-- Password: `admin123`
+- Admins are already initialized in the function named FIXED_ADMINS in server-rentals/controllers/AdminController.js. Please make changes accordingly there.
 
 ### API Testing
 ```bash
 # Test public vehicle endpoint
 curl http://localhost:5007/api/cars/getCars
 
-# Test authentication
-curl -X POST http://localhost:5007/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"email":"user@example.com","password":"password123"}'
-```
 
 ## 🚀 Deployment
 
