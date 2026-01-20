@@ -62,9 +62,9 @@ CLOUDINARY_API_KEY=your-cloudinary-api-key
 CLOUDINARY_API_SECRET=your-cloudinary-api-secret
 
 # Email Service (Gmail)
-SMTP_USER=your-email@gmail.com
-SMTP_PASS=your-gmail-app-password
-SENDER_EMAIL=noreply@ridesurf.com
+SMTP_USER="your-email-with@smtp-brevo.com"
+SMTP_PASS="your-created-key-smtp-pass"
+SENDER_EMAIL="your-account-email@gmail.com"
 
 # Server
 PORT=5007
