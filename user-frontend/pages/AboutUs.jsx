@@ -1,4 +1,5 @@
 import { Car, Users, Shield, Clock, MapPin, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const AboutUs = () => {
   return (
@@ -170,18 +171,18 @@ export const AboutUs = () => {
             Join thousands of satisfied customers who trust RideSurf for their travel needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/vehicles"
+            <Link
+              to="/vehicles"
               className="bg-primary text-white px-8 py-3 rounded-lg hover:bg-sky-600 font-semibold"
             >
               Browse Vehicles
-            </a>
-            <a
-              href="/support"
+            </Link>
+            <Link
+              to="/support"
               className="border border-primary text-primary px-8 py-3 rounded-lg hover:bg-primary hover:text-white font-semibold"
             >
               Get Support
-            </a>
+            </Link>
           </div>
         </div>
       </div>
